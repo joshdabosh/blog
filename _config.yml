@@ -1,0 +1,18 @@
+# Setup
+title:               'blog of bosh'
+tagline:             'mainly cybersec'
+description:         ''
+url:                 https://blog.joshwang.me
+baseurl:             ''
+paginate:            5
+permalink:           pretty
+
+# About/contact
+author:
+  name:              Joshua Wang
+  url:               https://github.com/joshdabosh
+  email:             josh@joshwang.me
+
+# Gems
+plugins:
+  - jekyll-paginate
