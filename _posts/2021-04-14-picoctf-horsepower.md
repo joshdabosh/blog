@@ -429,7 +429,6 @@ for(i = 0; i < shellcode.length; ++i){
 f()
 ```
 
-
 Flag: `picoCTF{sh0u1d_hAv3_d0wnl0ad3d_m0r3_rAm_ 7d527e4f03815bf}`
 
 In my next post, I will write up Turboflan, which deals with exploiting type confusion in TurboFan compiled functions.
