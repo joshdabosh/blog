@@ -15,11 +15,11 @@ The provided patch removes the calls to `DeoptimizeIfNot(DeoptimizeReason::kWron
 
 v8 is known for its speed, and one way it achieves this is by optimizing hot functions, or functions that get called many times. If it gets called so many times, why not compile it and skip the interpretation each call?
 
-However, such optimization presents the danger of confusing types in passed arguments, So, v8 also includes checks to verify the types of objects that are passed to a JITted function, among other checks too. If a check fails, the optimized code is considered unusable and is "deoptimized", or thrown out.
+However, such optimization presents the danger of confusing types in passed arguments. So, v8 also includes checks to verify the types of objects that are passed to a JITted function, among other checks too. If a check fails, the optimized code is considered unusable and is "deoptimized", or thrown out.
+
+The patch in TurboFlan basically removes the check that the maps are the same across function calls. If we get a function to be JITted that expects an argument of type `a`, and then give it an argument of type `b`, the function won't be de-optimized and will treat the argument that is actually type `b` as type `a`.
 
 <!-- more -->
-
-The patch in TurboFlan basically removes the check that the maps are the same across function calls. What this means is that if we get a function to be JITted that expects an argument of type `a`, and then give it an argument of type `b`, the function won't be de-optimized and will treat the argument that is actually type `b` as type `a`.
 
 ### debugging setup
 Now comes the confusing part (IMO): getting a JITted function. Honestly, I still do not know the exact determination of whether a function will get JITted or not besides it being "sufficently complex".
