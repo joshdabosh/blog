@@ -20,7 +20,9 @@ We are given a cobol file:
 
 We can leak all the addresses including the base of libc by copying `/proc/self/maps` to a file we create, and then reading it.
 
-I spent a long time learning too much cobol than anyone ever should.
+<!-- more -->
+
+I spent a long time learning too much cobol than anyone ever should to look for arbitrary writes.
 Basically, the sizes, file descriptors, and heap pointers to a file's contents are stored in arrays. Ultimately nothing in the implementation would lead to a heap memory corruption.
 
 However, a bug exists in the open cobol implementation of [`CBL_COPY_FILE`](https://github.com/ayumin/open-cobol/blob/72578e8fe3f13257ae5fb2b306aed112fbf7c3c4/libcob/fileio.c#L4751-L4768), which is used in the copy file function. My teammate panda found this but his internet cut out so I implemented it.
