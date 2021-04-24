@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PlaidCTF 2021: The Cobol Job
+title: PlaidCTF 2021 - The Cobol Job
 ---
 Even though I was going through some post-quarter-end burnout, I managed to join DiceGang for a bit during PlaidCTF 2021. We ended up getting 2nd, 1 place short of pre-qualifying for DEFCONCTF 2021 Finals :(
 
