@@ -5,7 +5,7 @@ title: PlaidCTF 2021 - The Cobol Job
 Even though I was going through some post-quarter-end burnout, I managed to join DiceGang for a bit during PlaidCTF 2021. We ended up getting 2nd, 1 place short of pre-qualifying for DEFCONCTF 2021 Finals :(
 
 ## The Cobol Job
-We are given a cobol file:
+We are given a cobol program that lets us:
 ```
 -----------------------
 1 - Create file
@@ -25,7 +25,7 @@ We can leak all the addresses including the base of libc by copying `/proc/self/
 I spent a long time learning too much cobol than anyone ever should to look for arbitrary writes.
 Basically, the sizes, file descriptors, and heap pointers to a file's contents are stored in arrays. Ultimately nothing in the implementation would lead to a heap memory corruption.
 
-However, a bug exists in the open cobol implementation of [`CBL_COPY_FILE`](https://github.com/ayumin/open-cobol/blob/72578e8fe3f13257ae5fb2b306aed112fbf7c3c4/libcob/fileio.c#L4751-L4768), which is used in the copy file function. My teammate panda found this but his internet cut out so I implemented it.
+However, a bug exists in the [open cobol implementation](https://github.com/ayumin/open-cobol/blob/72578e8fe3f13257ae5fb2b306aed112fbf7c3c4/libcob/fileio.c#L4751-L4768) of `CBL_COPY_FILE`, which is used in the copy file function. My teammate KyleForkBomb found this but his internet cut out so I implemented it.
 
 `fn1` is freed, and then written to shortly after. `fn1` just happens to be a 0x20 sized tcache chunk. Because this is Ubuntu 18.04, there is no pointer mangling so poisoning the tcache is very easy.
 
