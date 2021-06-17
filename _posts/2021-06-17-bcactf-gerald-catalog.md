@@ -13,6 +13,8 @@ The website we are given lets us view and create "Geralds". Gerald is just an im
 
 We are also allowed to opt into push notifications. When a Gerald is viewed, we can opt into getting push notifications for view events. Viewing a corresponding Gerald will cause a push notification to be sent to one's browser, and a popup will be shown.
 
+<!-- more -->
+
 ### source code
 #### server.ts:
 
