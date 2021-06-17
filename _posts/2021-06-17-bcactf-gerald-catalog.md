@@ -15,6 +15,7 @@ We are also allowed to opt into push notifications. When a Gerald is viewed, we 
 
 ### source code
 #### server.ts:
+
 | Route                           | Purpose                                                                  |
 |---------------------------------|--------------------------------------------------------------------------|
 | GET /                           | index page                                                               |
@@ -147,7 +148,7 @@ This sets up two push notification events. One will trigger when we view `510afe
 
 This causes the server to "view" `a5721434-b800-4c97-b3cd-8f05ba6911ab` when `fetch` follows the redirect. Viewing `a5721434-b800-4c97-b3cd-8f05ba6911ab` will cause another push notification containing the encrypted flag to be sent to our server B, which prints out the base64 encoding of it.
 
-### decrypting the Flag
+### decrypting the flag
 To decrypt the flag, I used [https://github.com/web-push-libs/ecec](https://github.com/web-push-libs/ecec). There is a convenient decryption utility that is included in the build instructions.
 
 To use it, we'll need our auth secret (the `auth` field of our request), the private key that we generated, and the URL-safe base64 version of the data received by our server.
