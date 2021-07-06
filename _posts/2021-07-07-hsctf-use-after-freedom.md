@@ -31,6 +31,8 @@ Upon running the program, we are allowed to:
 
 The provided libc is 2.27.
 
+<!-- more -->
+
 ### analysis
 
 There is a global array containing pointers to chunks that we have allocated. We are only given 5 allocations, which is very tight.
